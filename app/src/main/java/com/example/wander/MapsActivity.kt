@@ -172,13 +172,13 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun isPermissionGranted() : Boolean {
        return ContextCompat.checkSelfPermission(
             this,
-           Manifest.permission.ACCESS_FINE_LOCATION) === PackageManager.PERMISSION_GRANTED
+           Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
     // Checks if users have given their location and sets location enabled if so.
     private fun enableMyLocation() {
         if (isPermissionGranted()) {
-            map.setMyLocationEnabled(true)
+            map.isMyLocationEnabled = true
         }
         else {
             ActivityCompat.requestPermissions(
@@ -199,7 +199,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Check if location permissions are granted and if so enable the
         // location data layer.
         if (requestCode == REQUEST_LOCATION_PERMISSION) {
-            if (grantResults.size > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+            if (grantResults.contains(PackageManager.PERMISSION_GRANTED)) {
                 enableMyLocation()
             }
         }
