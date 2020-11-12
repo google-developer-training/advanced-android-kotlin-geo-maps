@@ -172,7 +172,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private fun isPermissionGranted() : Boolean {
        return ContextCompat.checkSelfPermission(
             this,
-           Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+           android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
     // Checks if users have given their location and sets location enabled if so.
@@ -183,7 +183,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         else {
             ActivityCompat.requestPermissions(
                 this,
-                arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                arrayOf<String>(android.Manifest.permission.ACCESS_FINE_LOCATION),
                 REQUEST_LOCATION_PERMISSION
             )
         }
